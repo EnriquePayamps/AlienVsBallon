@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: b9bc85f56008944478433aba1ca18ab5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - globoPrifab: {fileID: 1298952379546102255, guid: 8612f325da06c184ab1c7dba35fe6451,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
