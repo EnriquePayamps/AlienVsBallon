@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
     
 {
+    public AudioClip Sound;
     public float Speed;
     private Rigidbody2D rigidbody2d;
     private Vector2 Direction;
@@ -13,6 +14,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        Camera.main.GetComponent<AudioSource>().PlayOneShot(Sound);
 
     }
 

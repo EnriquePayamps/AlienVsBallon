@@ -11,13 +11,13 @@ public class GobloSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        timer += Time.deltaTime;         
 
-        if (timer >= 2f)
+        if (timer >= 1f)
         {
             timer = 0;
-            float x = Random.Range(-4.949311f, 4f);
-            Vector3 position = new Vector3(x, -6, 0);
+            float x = Random.Range(-60f, 40f);
+            Vector3 position = new Vector3(x, -35, 0);
             Quaternion rotation = new Quaternion();
 
             Instantiate(globoPrifab, position, rotation);
