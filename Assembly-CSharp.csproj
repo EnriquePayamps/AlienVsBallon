@@ -54,11 +54,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scrips\Player.cs" />
+    <Compile Include="Assets\Scrips\GobloSpawner.cs" />
+    <Compile Include="Assets\Scrips\ScoreManager.cs" />
     <Compile Include="Assets\Scrips\GameManager.cs" />
     <Compile Include="Assets\Scrips\Bullet.cs" />
     <Compile Include="Assets\Scrips\Globo.cs" />
-    <Compile Include="Assets\Scrips\GobloSpawner.cs" />
-    <Compile Include="Assets\Scrips\ScoreManager.cs" />
+    <Compile Include="Assets\Scrips\ButtonPause.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

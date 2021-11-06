@@ -7,12 +7,13 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager scoreManager;
     public Text scoreText;
-    int score = 0;
+     public int score = 1;
     float timer;
 
     private void Start()
     {
         scoreManager = this;
+        
     }
 
     void Update()
@@ -24,10 +25,16 @@ public class ScoreManager : MonoBehaviour
             timer = 0;
             score -= 5;
             scoreText.text = score + "";
-            Debug.Log(score);
+            if (score <= 0)
+            {
+                score = 0;
+                scoreText.text = score +  "";
+            }
         }
-    }
+        
 
+    }
+    
 
     public void RaiseScore(int s)
     {
@@ -35,6 +42,9 @@ public class ScoreManager : MonoBehaviour
         score += s;
         scoreText.text = score + "";
     }
+
+    
+        
 
     
 }

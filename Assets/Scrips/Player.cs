@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rigidbody2d;
     private Animator animator;
     public AudioClip Boom;
+    public GameObject GameOver;
     private int Health = 1;
 
     public float Speed;
@@ -19,6 +22,7 @@ public class Player : MonoBehaviour
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -26,16 +30,27 @@ public class Player : MonoBehaviour
     {
         
         input.y = Input.GetAxis("Vertical");
+        
+        if (ScoreManager.scoreManager.score <= 0)
+        {
+            Death();
+            
+        }
+        
+
+
     }
 
     private void FixedUpdate()
     {
         rigidbody2d.velocity = input * Speed * Time.fixedDeltaTime;
-        if (Input.GetKey(KeyCode.Space) && Time.time > LastShoot + 0.45f)
+        if (Input.GetKey(KeyCode.C) && Time.time > LastShoot + 0.45f)
         {
             shoot();
             LastShoot = Time.time;
         }
+
+        
     }
     private void shoot()
     {
@@ -47,17 +62,29 @@ public class Player : MonoBehaviour
         Camera.main.GetComponent<AudioSource>().PlayOneShot(Boom);
         Death();
         
+
     }
 
     private void Death()
     {
         Health -= 1;
-         
 
-        if (Health == 0)   animator.SetInteger("IsDeath", Health); Destroy(gameObject, 0.5f);
-        
-        
 
+        if (Health == 0) 
+        
+        {
+            animator.SetInteger("IsDeath", Health); 
+            Destroy(gameObject, 0.5f);
+            GameOver.SetActive(true);
+
+               // RestarGame();
+            
+        }
+
+    }
+    public void RestarGame()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 
 }
