@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public GameObject Bullet;
     private float LastShoot;
     Vector2 input;
+    float tiempo;
     private Rigidbody2D rigidbody2d;
     private Animator animator;
     public AudioClip Boom;
@@ -36,7 +37,17 @@ public class Player : MonoBehaviour
             Death();
             
         }
+        if (Input.GetKey(KeyCode.D))
+        {
+            Time.timeScale = 0;
+        }
+        if (Input.GetKey(KeyCode.R))
+        {
+            RestarGame();
+            Time.timeScale = 1;
+        }
         
+
 
 
     }
@@ -62,6 +73,9 @@ public class Player : MonoBehaviour
         Camera.main.GetComponent<AudioSource>().PlayOneShot(Boom);
         Death();
         
+        
+
+
 
     }
 
@@ -69,22 +83,37 @@ public class Player : MonoBehaviour
     {
         Health -= 1;
 
-
+        
         if (Health == 0) 
         
         {
-            animator.SetInteger("IsDeath", Health); 
-            Destroy(gameObject, 0.5f);
-            GameOver.SetActive(true);
-
-               // RestarGame();
             
+            animator.SetInteger("IsDeath", Health);
+            //Destroy(gameObject, 0.5f);
+            //Time.timeScale = 0;
+            GameOver.SetActive(true);
+            
+            
+            
+
+
+
         }
+        
+            
+        
 
     }
+  
+        
     public void RestarGame()
     {
-        SceneManager.LoadScene("SampleScene");
+
+        
+            SceneManager.LoadScene("SampleScene");
+        
+
+
     }
 
 }
